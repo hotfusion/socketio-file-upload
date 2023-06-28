@@ -53,6 +53,19 @@
 
 	var self = this; // avoids context issues
 
+	 // worker support
+	if(!window && FileReader && File){
+		var window = {
+		      FileReader,File
+		};
+	}
+
+	 if(!document){
+		 var document = {
+		    createEvent:(name) => new Event(name)
+		 };
+	 }
+	 
 	// Check for compatibility
 	if (!window.File || !window.FileReader) {
 		throw new Error("Socket.IO File Upload: Browser Not Supported");
