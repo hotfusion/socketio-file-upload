@@ -37,17 +37,6 @@ var util = require("util"),
 
 function SocketIOFileUploadServer(options) {
 	"use strict";
-
-	// worker support
-	if(!window && FileReader && File)
-		var window = {
-		      FileReader,File
-		};
-
-	 if(!document)
-		 var document = {
-		    createEvent:(name) => new Event(name)
-		 };
 	
 	EventEmitter.call(this);
 	var self = this; // avoids context issues
